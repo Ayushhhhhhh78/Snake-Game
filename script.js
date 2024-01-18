@@ -17,6 +17,8 @@ const speed_input = document.querySelector('input[type="range"]');
 // assigning elements *end*
 
 //setting up defaults *start*
+let speed = localStorage.getItem('speed') || 150;
+
 speed_input.addEventListener('input', () => {
     localStorage.setItem('speed', speed_input.value);
     spd_num.innerHTML = `Snake Speed : ${localStorage.getItem('speed')}`;
@@ -45,7 +47,6 @@ let src = 0
 let h_src = localStorage.getItem('high') || 0;
 score.innerHTML = src;
 highScore.innerHTML = h_src;
-let speed = 150;
 // game variables *end*
 
 //game over *start*
@@ -136,7 +137,7 @@ const engine = () => {
 //game handling *start*
 foodPosition();
 document.addEventListener('keydown', changeDir);
-inter = setInterval(engine,localStorage.getItem('speed'));
+inter = setInterval(engine,speed);
 //game handling *end*
 
 //handling absolutes *start*
