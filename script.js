@@ -109,6 +109,10 @@ const engine = () => {
     }
     //adding snakebody *end*
 
+    //snake head color *start*
+    // document.getElementsByClassName('snk')[0].style.cssText = 'background-color:green';
+    //snake head color *end*
+
     board.innerHTML = html;
 }
 //engine *end*
