@@ -21,9 +21,24 @@
         <div id="notify">
             Press any arrow key to start game !
         </div>
+        <div id="settings">
+            <i class="fa-solid fa-2x fa-gear"></i>
+        </div>
         <div id="del">
             <button>Clear Data</button>
         </div>
+
+        <!--settings-->
+        <div id="set">
+            <label id="spd-num">Snake Speed : 150</label>
+            <input type="range" max="500" min="20" value="150">
+            <label style="font-size:13px; color:rgb(3, 56, 3)">The less the speed value is the fast the snake will be !!!</label>
+            <br><br>
+            <button class="save" onclick="save()">Save</button><br>
+            <label style="font-size:13px; color:rgb(3, 56, 3)">Saving Changes will restart the game !!</label>
+        </div>
+        <!--settings end-->
+
         <!--absolute elements end-->
         <div id="out-score">
             <div class="in-content score">

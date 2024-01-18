@@ -45,7 +45,7 @@ body{
 /* game board */
 .board{
     height:100%;
-    background-color: #000;
+    background-color: #121212;
     display:grid;
     grid-template: repeat(30,1fr)/repeat(30,1fr);
     border: 2px solid white;
@@ -76,14 +76,14 @@ button:active{
 
 /*from script*/
 .fd{
-    background-color:red;
+    background-color:#EA2027;
     border-radius:50%;
     display:flex;
     align-items: center;
     justify-content: center;
 }
 .snk{
-    background-color:yellow;
+    background-color:#f1c40f;
     border-radius:0.2rem;
     text-align:center;
     display:flex;
@@ -93,7 +93,7 @@ button:active{
 /*from script end*/
 
 /*absolute elements !start! */
-#notify, #pause, #del{
+#notify, #settings, #del, #set{
     position:absolute;
 }
 #notify{
@@ -101,8 +101,17 @@ button:active{
     top:0;
     left:0;
     background-color:#34495e;
-    color: yellow;
+    color: #f1c40f;
 }
+#settings{
+    padding:10px;
+    top:0;
+    right:0;
+    background-color: #FFF;
+    border-radius:3px;
+    cursor:pointer;
+}
+#settings:hover{opacity:0.8}
 #del{
     padding:10px;
     bottom:0;
@@ -115,4 +124,79 @@ button:active{
     color: #2b2020;
     font-weight:bolder;
 }
+
+/*settings*/
+#set{
+    height:33vmin;
+    width:70vmin;
+    background-color: rgba(255,255,255,0.6);
+    border-radius:10px;
+    padding:3%;
+    overflow-y: auto;
+    overflow-x: auto;
+    animation-name: animator;
+    /* animation-delay: 1s; */
+    animation-duration: 100ms;
+    animation-iteration-count: 1;
+    display: none;
+}
+@keyframes animator{
+    0%{height:0;width:0}
+    5%{height:1vmin;width:1vmin}
+    10%{height:3vmin;width:5vmin}
+    15%{height:5vmin;width:10vmin}
+    30%{height:12vmin;width:20vmin}
+    45%{height:15vmin;width:30vmin}
+    60%{height:19vmin;width:40vmin}
+    70%{height:23vmin;width:50vmin}
+    85%{height:30vmin;width:60vmin}
+    100%{height:33vmin;width:70vmin}
+}
+#set::-webkit-scrollbar{display:none;}
+#set{scrollbar-width:none;-ms-overflow-style:none;}
+input{
+    width:100%;
+}
+.color{
+    width:100%;
+}
+.clr-box{
+    display:inline-block;
+    border:1px solid #000;
+    height:1.5vmax;
+    width:1.5vmax;
+}
+.save{
+    position: relative;
+    bottom:0;
+    right:0;
+    border:1px solid green;
+    color:green;
+    padding:10px;
+    background-color: transparent;
+    font-size:large;
+    cursor:pointer;
+}
+.cancel{
+    border:1px solid red;
+    color:red;
+}
+.save:hover{
+    border:1px solid green;
+    opacity:0.8;
+}
+.save:active{
+    border:1px solid green;
+    opacity:0.8;
+}
+/*settings end*/
+
 /*absolute elements !end! */
+
+/* media query */
+@media screen and (max-width:530px){
+    #set{
+        height:60vmin;
+    }
+}
+/* media query end*/

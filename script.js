@@ -10,7 +10,27 @@ let adGameOver = new Audio('gameover.mp3');
 
 const notify = document.getElementById('notify');
 const del = document.querySelector('#del button');
+
+const label = document.querySelectorAll('label span');
+const spd_num = document.getElementById('spd-num');
+const speed_input = document.querySelector('input[type="range"]');
 // assigning elements *end*
+
+//setting up defaults *start*
+speed_input.addEventListener('input', () => {
+    localStorage.setItem('speed', speed_input.value);
+    spd_num.innerHTML = `Snake Speed : ${localStorage.getItem('speed')}`;
+    speed_input.value = localStorage.getItem('speed');
+})
+spd_num.innerHTML = `Snake Speed : ${localStorage.getItem('speed')}`;
+speed_input.value = localStorage.getItem('speed');
+
+document.getElementById('settings').addEventListener('click', () => {
+    document.getElementById('set').style.display = "block";
+    clearInterval(inter);
+    notify.innerHTML = 'paused !!';
+})
+//setting up defaults *end*
 
 // game variables *start*
 let foodX; let foodY;
@@ -25,6 +45,7 @@ let src = 0
 let h_src = localStorage.getItem('high') || 0;
 score.innerHTML = src;
 highScore.innerHTML = h_src;
+let speed = 150;
 // game variables *end*
 
 //game over *start*
@@ -108,11 +129,6 @@ const engine = () => {
         if(i!=0) if(snakeBody[0][0] == snakeBody[i][0] && snakeBody[0][1] == snakeBody[i][1]) gameOver = true;
     }
     //adding snakebody *end*
-
-    //snake head color *start*
-    // document.getElementsByClassName('snk')[0].style.cssText = 'background-color:green';
-    //snake head color *end*
-
     board.innerHTML = html;
 }
 //engine *end*
@@ -120,12 +136,17 @@ const engine = () => {
 //game handling *start*
 foodPosition();
 document.addEventListener('keydown', changeDir);
-inter = setInterval(engine,150);
+inter = setInterval(engine,localStorage.getItem('speed'));
 //game handling *end*
 
 //handling absolutes *start*
 del.addEventListener('click', () => {
     localStorage.removeItem('high');
+    localStorage.setItem('speed', 150);
     location.reload();
 })
+const save = () => {
+    alert('Saved !!');
+    location.reload();
+}
 //handling absolutes *end*
