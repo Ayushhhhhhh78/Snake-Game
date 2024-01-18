@@ -18,6 +18,8 @@ const speed_input = document.querySelector('input[type="range"]');
 
 //setting up defaults *start*
 let speed = localStorage.getItem('speed') || 150;
+spd_num.innerHTML = `Snake Speed : ${speed}`;
+speed_input.value = speed;
 
 speed_input.addEventListener('input', () => {
     localStorage.setItem('speed', speed_input.value);
